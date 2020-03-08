@@ -1,6 +1,10 @@
 # CarND-Controls-PID
 Self-Driving Car Engineer Nanodegree Program
 
+**You can find PID Controller implement method in detail at the end of this README file.**
+
+![PIDController](https://github.com/Arzkaban/PID-Control-Project/blob/master/PIDController.gif)
+
 ---
 
 ## Dependencies
@@ -93,6 +97,35 @@ that's just a guess.
 One last note here: regardless of the IDE used, every submitted project must
 still be compilable with cmake and make./
 
-## How to write a README
-A well written README file can enhance your project and portfolio.  Develop your abilities to create professional README files by completing [this free course](https://www.udacity.com/course/writing-readmes--ud777).
+## Results / Reflection
+
+**Components of PID**:
+
+#### Proportional (P):
+
+This parameter controls the error **proportionally** form cross-track error(CTE). Increasing the proportional gain has the effect of proportionally increasing the control signal for the same level of error(more force to go back). A large P value will make the controller agressive back to neutra(CTE=0), but this value will also cause **oscillations**.
+
+#### Integral (I):
+
+This parameter compensate accumulating error. It will reduce **Steady State Error**. Also easy to cause **oscillation**.
+
+#### Derivative (D):
+
+This parameter compensate the **rate of change of error**. It will **reduce oscillation** dramatically. With derivative control, the control signal can become large if the error begins sloping upward, even while the magnitude of the error is still relatively small. This anticipation tends to add damping to the system, thereby decreasing overshoot.
+
+##Tuning Approach:
+
+**Step 1:** Initial all gains to zero.
+
+**Step 2:** Increase P gain until we see a large steady oscillation.
+
+**Step 3:** Increase D gain until oscillation go down.
+
+**Step 4:** Iterate Step2 - Step3, untill increasing D gain are not able to reduce oscilation.
+
+N.B. In this project I don't use I gain, considering there are not steady state(vehicle is keep turnning), we do not need vehicle drive exactly in the middle of the road, a little bias is acceptable.
+
+| Kp   | Ki   | KD   |
+| ---- | ---- | ---- |
+| 0.10 | 0.00 | 1.00 |
 
