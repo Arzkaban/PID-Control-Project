@@ -127,5 +127,5 @@ N.B. In this project I don't use I gain, considering there are not steady state(
 
 | Kp   | Ki   | KD   |
 | ---- | ---- | ---- |
-| 0.10 | 0.00 | 1.00 |
+| 0.30 | 0.00 | 6.00 |
 
